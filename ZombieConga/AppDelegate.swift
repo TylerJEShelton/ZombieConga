@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  ZombieConga
 //
-//  Created by Kourtney Shelton on 2017-07-05.
+//  Created by Tyler Shelton on 2017-07-05.
 //  Copyright © 2017 Bullfrog Development Studio. All rights reserved.
 //
 
