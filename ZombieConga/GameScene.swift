@@ -49,6 +49,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        playBackgroundMusic(filename: "backgroundMusic.mp3")
         backgroundColor = SKColor.black
         let background = SKSpriteNode(imageNamed: "background1")
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -89,6 +90,7 @@ class GameScene: SKScene {
         if lives <= 0 && !gameOver {
             gameOver = true
             print("You lose!")
+            backgroundMusicPlayer.stop()
             let gameOverScene = GameOverScene(size: size, won: false)
             gameOverScene.scaleMode = scaleMode
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
@@ -300,6 +302,7 @@ class GameScene: SKScene {
         if trainCount >= 15 && !gameOver {
             gameOver = true
             print("You win!")
+            backgroundMusicPlayer.stop()
             let gameOverScene = GameOverScene(size: size, won: true)
             gameOverScene.scaleMode = scaleMode
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
