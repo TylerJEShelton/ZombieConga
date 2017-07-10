@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F00A16381F12FEEC00A040EF /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00A16371F12FEEC00A040EF /* GameOverScene.swift */; };
 		F0975CB41F1285A900561B9C /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F0975CAF1F1285A900561B9C /* backgroundMusic.mp3 */; };
 		F0975CB51F1285A900561B9C /* hitCat.wav in Resources */ = {isa = PBXBuildFile; fileRef = F0975CB01F1285A900561B9C /* hitCat.wav */; };
 		F0975CB61F1285A900561B9C /* hitCatLady.wav in Resources */ = {isa = PBXBuildFile; fileRef = F0975CB11F1285A900561B9C /* hitCatLady.wav */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F00A16371F12FEEC00A040EF /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		F0975CAF1F1285A900561B9C /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
 		F0975CB01F1285A900561B9C /* hitCat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitCat.wav; sourceTree = "<group>"; };
 		F0975CB11F1285A900561B9C /* hitCatLady.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitCatLady.wav; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				F0975CB91F12A08700561B9C /* Sounds */,
 				F0D46C911F0DB8C800DD9B95 /* AppDelegate.swift */,
 				F0D46C971F0DB8C800DD9B95 /* GameScene.swift */,
+				F00A16371F12FEEC00A040EF /* GameOverScene.swift */,
 				F0D46CA91F0DE64D00DD9B95 /* MyUtils.swift */,
 				F0D46C991F0DB8C800DD9B95 /* GameViewController.swift */,
 				F0D46C9B1F0DB8C800DD9B95 /* Main.storyboard */,
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F00A16381F12FEEC00A040EF /* GameOverScene.swift in Sources */,
 				F0D46C981F0DB8C800DD9B95 /* GameScene.swift in Sources */,
 				F0D46C9A1F0DB8C800DD9B95 /* GameViewController.swift in Sources */,
 				F0D46C921F0DB8C800DD9B95 /* AppDelegate.swift in Sources */,

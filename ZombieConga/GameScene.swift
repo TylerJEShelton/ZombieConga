@@ -61,7 +61,7 @@ class GameScene: SKScene {
         //zombie.run(SKAction.repeatForever(zombieAnimation))
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run() { [weak self] in self?.spawnEnemy() }, SKAction.wait(forDuration: 2.0)])))
         run(SKAction.repeatForever(SKAction.sequence([SKAction.run() { [weak self] in self?.spawnCat() }, SKAction.wait(forDuration: 1.0)])))
-        debugDrawPlayableArea()
+        //debugDrawPlayableArea()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -85,7 +85,16 @@ class GameScene: SKScene {
         
         boundsCheckZombie()
         moveTrain()
-        //checkCollisions()
+        
+        if lives <= 0 && !gameOver {
+            gameOver = true
+            print("You lose!")
+            let gameOverScene = GameOverScene(size: size, won: false)
+            gameOverScene.scaleMode = scaleMode
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            view?.presentScene(gameOverScene, transition: reveal)
+        }
+        
         
     }
     
@@ -233,6 +242,8 @@ class GameScene: SKScene {
         zombie.run(SKAction.sequence([blinkAction, isHidden]))
         
         run(enemyCollisionSound)
+        loseCats()
+        lives -= 1
     }
     
     func checkCollisions() {
@@ -267,10 +278,13 @@ class GameScene: SKScene {
     override func didEvaluateActions() {
         checkCollisions()
     }
+    
     func moveTrain() {
         var targetPosition = zombie.position
+        var trainCount = 0
         
         enumerateChildNodes(withName: "train") { node, stop in
+            trainCount += 1
             if !node.hasActions() {
                 let actionDuration = 0.3
                 let offset = targetPosition - node.position //a
@@ -281,6 +295,30 @@ class GameScene: SKScene {
                 node.run(moveAction)
             }
             targetPosition = node.position
+        }
+        
+        if trainCount >= 15 && !gameOver {
+            gameOver = true
+            print("You win!")
+            let gameOverScene = GameOverScene(size: size, won: true)
+            gameOverScene.scaleMode = scaleMode
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            view?.presentScene(gameOverScene, transition: reveal)
+        }
+    }
+    
+    func loseCats() {
+        var loseCount = 0
+        enumerateChildNodes(withName: "train") { node, stop in
+            var randomSpot = node.position
+            randomSpot.x += CGFloat.random(min: -100, max: 100)
+            randomSpot.y += CGFloat.random(min: -100, max: 100)
+            node.name = ""
+            node.run(SKAction.sequence([SKAction.group([SKAction.rotate(byAngle: π*4, duration:1.0), SKAction.move(to: randomSpot, duration: 1.0), SKAction.scale(to: 0, duration: 1.0)]), SKAction.removeFromParent()]))
+            loseCount += 1
+            if loseCount >= 2 {
+                stop[0] = true
+            }
         }
     }
 }
